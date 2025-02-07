@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Simple Website</h1>
+        <div class="images">
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <img src="image3.jpg" alt="Image 3">
+        </div>
+        <div class="letter">
+            <h2>Write a Letter</h2>
+            <textarea id="letter" placeholder="Write your letter here..."></textarea>
+            <input type="password" id="password" placeholder="Enter password to lock the letter">
+            <button onclick="lockLetter()">Lock Letter</button>
+        </div>
+        <div class="locked-letter" id="locked-letter" style="display:none;">
+            <h2>Locked Letter</h2>
+            <input type="password" id="unlock-password" placeholder="Enter password to unlock">
+            <button onclick="unlockLetter()">Unlock Letter</button>
+            <p id="letter-content"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
