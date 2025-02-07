@@ -12,6 +12,8 @@
             <div class="display">
                 <div class="message-box" id="message-box"></div>
                 <div class="code-display" id="code-display">******</div>
+                <img id="success-image" src="Image/1509.jpg" alt="Success"class= "notification-image" style="display: none;">
+                <img id="error-image" src="Image/1409.jpg" alt="Error"class= "notification-image"  style="display: none;">
             </div>
             <div class="keypad">
                 <div class="keypad-row">
@@ -30,7 +32,7 @@
                     <button onclick="enterDigit(9)">9</button>
                 </div>
                 <div class="keypad-row">
-                    <button class="wide-button" onclick="resetCode()">Xóa</button>
+                    <button class="wide-button" onclick="resetCode()">Delete</button>
                     <button onclick="enterDigit(0)">0</button>
                     <button class="wide-button" onclick="enterCode()">Enter</button>
                 </div>
@@ -39,11 +41,13 @@
 
         <div class="unlocked-screen" id="unlocked-screen" style="display: none;">
             <div class="left-panel">
-                <div class="image-box">ảnh 1</div>
-                <div class="image-box">ảnh 2</div>
+                <div class="image-box"><img src="Image/1609.jpg" alt="Ảnh 1"></div>
+                <div class="image-box"><img src="Image/1709.jpg" alt="Ảnh 2"></div>
             </div>
             <div class="right-panel">
-                <div class="content-box">Nội dung</div>
+                <div class="content-box">
+                    <!-- Nội dung sẽ được truyền từ file text vào đây -->
+                </div>
             </div>
         </div>
     </div>
