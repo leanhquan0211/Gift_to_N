@@ -17,10 +17,10 @@ function resetCode() {
 function enterCode() {
     if (code === correctCode) {
         showMessage('Đúng rồi!', 'green');
-        unlockScreen();
+        setTimeout(unlockScreen, 1000); // Hiển thị thông báo "Đúng rồi!" trong 1 giây trước khi chuyển giao diện
     } else {
         showMessage('Sai rồi!', 'red');
-        resetCode();
+        setTimeout(resetCode, 1000); // Hiển thị thông báo "Sai rồi!" trong 1 giây trước khi reset mã
     }
 }
 
