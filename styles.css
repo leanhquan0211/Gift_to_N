@@ -44,6 +44,17 @@ body {
      letter-spacing: 5px;
  }
  
+ .keypad {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ .keypad-row {
+     display: flex;
+     justify-content: center;
+     margin-bottom: 10px;
+ }
+ 
  .keypad button {
      margin: 5px;
      padding: 15px;
@@ -59,5 +70,48 @@ body {
  
  .keypad button:hover {
      background-color: #45a049;
+ }
+ 
+ .unlocked-screen {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+ 
+ .left-panel {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     margin-right: 20px;
+ }
+ 
+ .image-box {
+     width: 100px;
+     height: 100px;
+     background-color: pink;
+     margin: 10px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 18px;
+     border: 1px solid #ccc;
+ }
+ 
+ .right-panel {
+     flex-grow: 1;
+     background-color: purple;
+     height: 220px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     font-size: 18px;
+     color: white;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+ }
+ 
+ .content-box {
+     width: 100%;
+     text-align: center;
  }
  

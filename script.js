@@ -17,8 +17,7 @@ function resetCode() {
 function enterCode() {
     if (code === correctCode) {
         showMessage('Đúng rồi!', 'green');
-        // Chuyển đến giao diện mới sau khi mở khóa (chờ nhận ảnh tiếp theo)
-        // window.location.href = 'unlocked.html';  // Ví dụ nếu bạn có một tệp HTML khác cho giao diện sau khi mở khóa
+        unlockScreen();
     } else {
         showMessage('Sai rồi!', 'red');
         resetCode();
@@ -29,4 +28,9 @@ function showMessage(message, color) {
     const messageBox = document.getElementById('message-box');
     messageBox.innerText = message;
     messageBox.style.color = color;
+}
+
+function unlockScreen() {
+    document.getElementById('lock-screen').style.display = 'none';
+    document.getElementById('unlocked-screen').style.display = 'flex';
 }

@@ -8,24 +8,42 @@
 </head>
 <body>
     <div class="container">
-        <div class="lock-screen">
+        <div class="lock-screen" id="lock-screen">
             <div class="display">
                 <div class="message-box" id="message-box"></div>
                 <div class="code-display" id="code-display">******</div>
             </div>
             <div class="keypad">
-                <button onclick="enterDigit(1)">1</button>
-                <button onclick="enterDigit(2)">2</button>
-                <button onclick="enterDigit(3)">3</button>
-                <button onclick="enterDigit(4)">4</button>
-                <button onclick="enterDigit(5)">5</button>
-                <button onclick="enterDigit(6)">6</button>
-                <button onclick="enterDigit(7)">7</button>
-                <button onclick="enterDigit(8)">8</button>
-                <button onclick="enterDigit(9)">9</button>
-                <button onclick="enterDigit(0)">0</button>
-                <button onclick="resetCode()">Xóa</button>
-                <button onclick="enterCode()">Enter</button>
+                <div class="keypad-row">
+                    <button onclick="enterDigit(1)">1</button>
+                    <button onclick="enterDigit(2)">2</button>
+                    <button onclick="enterDigit(3)">3</button>
+                </div>
+                <div class="keypad-row">
+                    <button onclick="enterDigit(4)">4</button>
+                    <button onclick="enterDigit(5)">5</button>
+                    <button onclick="enterDigit(6)">6</button>
+                </div>
+                <div class="keypad-row">
+                    <button onclick="enterDigit(7)">7</button>
+                    <button onclick="enterDigit(8)">8</button>
+                    <button onclick="enterDigit(9)">9</button>
+                </div>
+                <div class="keypad-row">
+                    <button onclick="resetCode()">Xóa</button>
+                    <button onclick="enterDigit(0)">0</button>
+                    <button onclick="enterCode()">Enter</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="unlocked-screen" id="unlocked-screen" style="display: none;">
+            <div class="left-panel">
+                <div class="image-box">ảnh 1</div>
+                <div class="image-box">ảnh 2</div>
+            </div>
+            <div class="right-panel">
+                <div class="content-box">Nội dung</div>
             </div>
         </div>
     </div>
