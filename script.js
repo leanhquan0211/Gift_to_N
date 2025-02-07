@@ -11,15 +11,22 @@ function enterDigit(digit) {
 function resetCode() {
     code = '';
     document.getElementById('code-display').innerText = '******';
+    document.getElementById('message-box').innerText = '';
 }
 
 function enterCode() {
     if (code === correctCode) {
-        alert('Mật mã đúng! Đang mở khóa...');
+        showMessage('Đúng rồi!', 'green');
         // Chuyển đến giao diện mới sau khi mở khóa (chờ nhận ảnh tiếp theo)
         // window.location.href = 'unlocked.html';  // Ví dụ nếu bạn có một tệp HTML khác cho giao diện sau khi mở khóa
     } else {
-        alert('Mật mã sai! Vui lòng thử lại.');
+        showMessage('Sai rồi!', 'red');
         resetCode();
     }
+}
+
+function showMessage(message, color) {
+    const messageBox = document.getElementById('message-box');
+    messageBox.innerText = message;
+    messageBox.style.color = color;
 }

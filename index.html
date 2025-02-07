@@ -8,11 +8,11 @@
 </head>
 <body>
     <div class="container">
-        <div class="locked">
-            <div class="locked-message">
-                Giao diện khi chưa mở khóa
+        <div class="lock-screen">
+            <div class="display">
+                <div class="message-box" id="message-box"></div>
+                <div class="code-display" id="code-display">******</div>
             </div>
-            <div class="code-display" id="code-display">******</div>
             <div class="keypad">
                 <button onclick="enterDigit(1)">1</button>
                 <button onclick="enterDigit(2)">2</button>
@@ -24,7 +24,7 @@
                 <button onclick="enterDigit(8)">8</button>
                 <button onclick="enterDigit(9)">9</button>
                 <button onclick="enterDigit(0)">0</button>
-                <button onclick="resetCode()">C</button>
+                <button onclick="resetCode()">Xóa</button>
                 <button onclick="enterCode()">Enter</button>
             </div>
         </div>
