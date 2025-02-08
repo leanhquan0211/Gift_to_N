@@ -18,11 +18,11 @@ function resetCode() {
 
 function enterCode() {
     if (code === correctCode) {
-        showMessage('Đúng rồi!', 'green', 'success');
-        setTimeout(unlockScreen, 3000); // Hiển thị thông báo và hình ảnh trong 1 giây trước khi chuyển giao diện
+        showMessage('Tèn tén ten', 'pink', 'success');
+        setTimeout(showQuestion1, 1000); // Hiển thị câu hỏi thứ nhất sau 1 giây
     } else {
-        showMessage('Sai rồi!', 'red', 'error');
-        setTimeout(resetCode, 3000); // Hiển thị thông báo và hình ảnh trong 1 giây trước khi reset mã
+        showMessage('Nố nô nồ', 'pink', 'error');
+        setTimeout(resetCode, 1000); // Hiển thị thông báo và hình ảnh trong 1 giây trước khi reset mã
     }
 }
 
@@ -45,18 +45,95 @@ function showMessage(message, color, type) {
 
 function unlockScreen() {
     document.getElementById('lock-screen').style.display = 'none';
-    document.getElementById('unlocked-screen').style.display = 'flex';
 }
 
-function loadContent() {
-     fetch('Content.txt')
-         .then(response => response.text())
-         .then(data => {
-             document.querySelector('.content-box').innerText = data;
-         })
-         .catch(error => console.error('Error fetching the file:', error));
- }
- 
- // Gọi hàm loadContent khi trang được tải
- window.onload = loadContent;
- 
+function showQuestion1() {
+    unlockScreen();
+    document.getElementById('question-screen-1').style.display = 'flex';
+}
+
+function showQuestion2() {
+    document.getElementById('question-screen-2').style.display = 'flex';
+}
+
+function showQuestion3() {
+    document.getElementById('question-screen-3').style.display = 'flex';
+}
+
+function showUnlockedScreen() {
+    document.getElementById('question-screen-1').style.display = 'none';
+    document.getElementById('unlocked-screen').style.display = 'flex';
+    loadUnlockedContent();
+}
+
+function showFinalScreen() {
+    document.getElementById('question-screen-3').style.display = 'none';
+    document.getElementById('final-screen').style.display = 'flex';
+    loadFinalContent();
+}
+
+function loadUnlockedContent() {
+    fetch('Content1.txt') // Đảm bảo rằng file text nằm trong cùng thư mục với các tệp khác
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('.right-panel .content-box').innerText = data;
+        })
+        .catch(error => console.error('Error fetching the file:', error));
+}
+
+function loadFinalContent() {
+    fetch('Content2.txt') // Đảm bảo rằng file text nằm trong cùng thư mục với các tệp khác
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('final-content-box').innerText = data;
+        })
+        .catch(error => console.error('Error fetching the file:', error));
+}
+
+function checkAnswer(questionNumber, option) {
+    if (questionNumber === 1) {
+        if (option === 'option1') {
+            // Nếu chọn đúng ở câu 1
+            showUnlockedScreen();
+        } else {
+            // Nếu chọn sai ở câu 1
+            document.getElementById('question-screen-1').style.display = 'none';
+            showQuestion2();
+        }
+    } else if (questionNumber === 2) {
+        if (option === 'option1') {
+            // Nếu chọn đúng ở câu 2
+            document.getElementById('question-screen-2').style.display = 'none';
+            showQuestion1();
+        } else {
+            // Nếu chọn sai ở câu 2
+            document.getElementById('question-screen-2').style.display = 'none';
+            showQuestion3();
+        }
+    } else if (questionNumber === 3) {
+        if (option === 'option1') {
+            // Nếu chọn đúng ở câu 3
+            document.getElementById('question-screen-3').style.display = 'none';
+            showQuestion2();
+        } else {
+            // Nếu chọn sai ở câu 3
+            showFinalScreen();
+        }
+    }
+}
+
+function backToQuestion(questionNumber) {
+    if (questionNumber === 1) {
+        document.getElementById('unlocked-screen').style.display = 'none';
+        document.getElementById('question-screen-1').style.display = 'flex';
+    } else if (questionNumber === 3) {
+        document.getElementById('final-screen').style.display = 'none';
+        document.getElementById('question-screen-3').style.display = 'flex';
+    }
+}
+
+// Gọi hàm loadContent khi trang được tải
+window.onload = () => {
+    loadUnlockedContent();
+    loadFinalContent();
+};
