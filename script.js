@@ -16,15 +16,84 @@ function resetCode() {
     document.getElementById('error-image').style.display = 'none';
 }
 
+const backgroundMusic = document.getElementById('background-music');
+const musicPlayer = document.getElementById('music-player');
+const albumVideo = document.getElementById('album-video');
+const playPauseButton = document.getElementById('play-pause');
+const playIcon = document.getElementById('play-icon');
+const pauseIcon = document.getElementById('pause-icon');
+const progress = document.getElementById('progress');
+
+let isPlaying = false;
+
+function playMusic() {
+    backgroundMusic.play();
+    albumVideo.play();
+    musicPlayer.style.display = 'flex';
+    playIcon.style.display = 'none';
+    pauseIcon.style.display = 'block';
+    isPlaying = true;
+}
+
+function pauseMusic() {
+    backgroundMusic.pause();
+    albumVideo.pause();
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+    isPlaying = false;
+}
+
+function togglePlayPause() {
+    if (isPlaying) {
+        pauseMusic();
+    } else {
+        playMusic();
+    }
+}
+
+backgroundMusic.ontimeupdate = () => {
+    const progressPercentage = (backgroundMusic.currentTime / backgroundMusic.duration) * 100;
+    progress.style.width = `${progressPercentage}%`;
+};
+
+window.onbeforeunload = () => {
+    backgroundMusic.pause();
+    albumVideo.pause();
+    backgroundMusic.currentTime = 0;
+    albumVideo.currentTime = 0;
+};
+
+// Bắt đầu phát nhạc và hiển thị khi mã code đúng
 function enterCode() {
     if (code === correctCode) {
         showMessage('Tèn tén ten', 'pink', 'success');
-        setTimeout(showQuestion1, 1000); // Hiển thị câu hỏi thứ nhất sau 1 giây
+        setTimeout(() => {
+            showScreen('question-screen-1'); // Chuyển đến câu hỏi 1
+            playMusic();
+        }, 1500); // Hiệu ứng chuyển đổi trong 1.5s
     } else {
         showMessage('Nố nô nồ', 'pink', 'error');
-        setTimeout(resetCode, 1000); // Hiển thị thông báo và hình ảnh trong 1 giây trước khi reset mã
+        setTimeout(resetCode, 1000);
     }
 }
+
+function showScreen(screenId) {
+    const screens = document.querySelectorAll('.screen');
+    screens.forEach(screen => {
+        screen.classList.remove('active');
+        screen.style.display = 'none';  // Ẩn tất cả các màn hình khác
+    });
+
+    const activeScreen = document.getElementById(screenId);
+    activeScreen.classList.add('active');
+    activeScreen.style.display = 'flex';  // Hiển thị màn hình mong muốn
+    
+    // Ẩn màn hình khóa
+    document.getElementById('lock-screen').style.display = 'none';
+}
+
+
+
 
 function showMessage(message, color, type) {
     const messageBox = document.getElementById('message-box');

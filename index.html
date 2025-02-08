@@ -71,10 +71,33 @@
 
         <!-- Giao diện 1 -->
         <div class="unlocked-screen" id="unlocked-screen" style="display: none;">
-            <div class="left-panel">
-                <div class="image-box"><img src="Image/GD11.jpg" alt="Ảnh 1"></div>
-                <div class="image-box"><img src="Image/GD12.jpg" alt="Ảnh 2"></div>
+            <div class="left-panel" id="left-panel">
+                <audio id="background-music" loop>
+                    <source src="Audio/MDQN.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <div class="music-player" id="music-player">
+                    <video id="album-video" class="album-video" controls loop>
+                        <source src="Audio/mmr2022.mp4" type="video/mp4">
+                        Your browser does not support the video element.
+                    </video>
+                    <div class="song-info">
+                        <p class="song-title">Memories 2022 </p>
+                        <p class="artist-name">Tại hong có gì khác để zô</p>
+                    </div>
+                    <div class="progress-bar" id="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <div class="controls">
+                        <button id="play-pause" onclick="togglePlayPause()">
+                            <div id="play-icon">&#9654;</div>
+                            <div id="pause-icon" style="display: none;">&#8214;</div>
+                        </button>
+                    </div>
+                </div>
             </div>
+            
+            
             <div class="right-panel">
                 <div class="content-box">
                     <!-- Nội dung sẽ được truyền từ file text vào đây -->
@@ -92,5 +115,10 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <audio id="background-music" loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
 </body>
 </html>

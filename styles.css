@@ -2,14 +2,17 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f0;
+    background-color: #e8b8b8;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('https://example.com/flower-background.jpg');
+    background-image: url('Image/QN.PNG');
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background-image 1s ease-in-out; 
 }
 
 .container {
@@ -86,12 +89,12 @@ body {
 
 .unlocked-screen {
     display: flex;
-    background-image: url('Image/back.png'); 
-    background-size: contain;
-    /* background-position: center center */
+    background-color: #b96464;
+
     justify-content: space-between;
     align-items: center;
-    border-radius: 15px;
+    border-radius: 25px;
+    border: 5px solid #902828;
 }
 
 .left-panel {
@@ -100,31 +103,98 @@ body {
     align-items: center;
     margin-right: 20px;
     width: 200px;
-    /* background-image: url('Image/1609.jpg');
-    background-size: cover; */
     border: 0px solid #ccc;
     border-radius: 5px;
 }
 
-.image-box {
-    width: 164px;
-    height: 109px;
-    background-color: pink;
-    margin: 10px;
+.music-player {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border: 4px solid #1a4140;
-    border-radius: 15px;
-    overflow: hidden; /* Đảm bảo rằng các phần tử con không vượt quá kích thước của khung */
+    width: 180px;
+    height: 320px;
+    background-color: #ecc2c2;
+    padding: 10px;
+    border: 7px solid #902828;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Ban đầu ẩn khung phát nhạc */
 }
 
-.image-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Đảm bảo rằng hình ảnh sẽ bao phủ toàn bộ khung mà không bị méo */
-    border-radius: 10px;
+
+
+.song-info {
+    text-align: center;
 }
+
+.song-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.artist-name {
+    font-size: 14px;
+    color: gray;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.controls button {
+    width: 40px;
+    height: 40px;
+    background-color:  #902828;;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controls button:hover {
+    background-color: #cd303a;
+}
+
+#play-icon {
+    font-size: 24px;
+}
+#pause-icon {
+    font-size: 30px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    background-color: #902828;;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.album-video {
+    width: 90%;
+    height: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 3px solid #902828;
+    border-radius: 20px;
+}
+
 
 .right-panel {
     flex-grow: 1;
@@ -180,11 +250,14 @@ body {
     align-items: center;
     justify-content: center;
 
-    height: 100vh;
-    background-color: #f1a4a4;
-    border-radius: 10px;
+    height: 500px;
+    width: 400px;
+    background-color: #da9090;
+    border-radius: 50px;
+    border: 4px solid #902828;
     box-shadow: 0 0 10px rgba(168, 30, 30, 0.1);
     padding: 20px;
+    
 }
 
 .question-screen p, .final-screen p {
@@ -216,15 +289,19 @@ body {
 .question-image {
     max-width: 200px;
     margin-bottom: 20px;
+    border: 4px solid #902828;
+    border-radius: 15px;
 }
 
 .final-screen {
     background-image: url('Image/1609.jpg'); /* Đặt nền ảnh cho giao diện cuối cùng */
-    background-size: contain;
-    background-position: center center
+    background-size: cover;
+    background-position: center center;
+    border: 5px solid #1a4d85;
+    border-radius: 50px;
 }
 .final-screen .content-box {
-    width: 500px; /* Chiều rộng cố định, có thể thay đổi tùy ý */
+    width: 350px; /* Chiều rộng cố định, có thể thay đổi tùy ý */
     height: 500px; /* Chiều cao cố định, có thể thay đổi tùy ý */
     text-align: left;
     overflow: auto; /* Đảm bảo rằng nội dung trong khung có thể cuộn nếu vượt quá kích thước khung */
@@ -237,7 +314,7 @@ body {
 }
 .unlocked-screen .content-box {
     width: 440px;
-    height: 200px; /* Chiều cao cố định, có thể thay đổi tùy ý */
+    height: 220px; /* Chiều cao cố định, có thể thay đổi tùy ý */
     text-align: left;
     overflow: auto; /* Thêm thuộc tính này để làm cho ô có thể cuộn */
     padding: 20px;
@@ -246,7 +323,7 @@ body {
     background-color: rgba(43, 183, 75, 0.5);;
     color: rgb(175, 83, 83);
     font-family: 'Lora', sans-serif;
-    border: 4px solid #1a4140;
+    border: 4px solid #902828;
     border-radius: 15px;
 }
 
@@ -256,7 +333,7 @@ body {
     right: 20px;
     padding: 10px 20px;
     font-size: 18px;
-    background-color: #000000b4;
+    background-color: #f76969b4;
     color: white;
     border: none;
     border-radius: 5px;
@@ -270,6 +347,28 @@ body {
 
 .right-panel {
     position: relative; /* Đảm bảo rằng các phần tử con có vị trí tuyệt đối nằm trong khung nội dung */
+}
+@keyframes morph {
+    0% {
+        opacity: 0;
+        transform: scale(3);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(3);
+    }
+}
+
+.screen {
+    display: none;  /* Ẩn mặc định */
+    opacity: 0;
+    transition: opacity 3s ease-in-out, transform 3s ease-in-out;
+}
+
+.screen.active {
+    display: flex;  /* Hiển thị màn hình khi có lớp active */
+    opacity: 1;
+    animation: morph 3s forwards;
 }
 
 
