@@ -82,7 +82,7 @@ function loadUnlockedContent() {
 }
 
 function loadFinalContent() {
-    fetch('Content2.txt') // Đảm bảo rằng file text nằm trong cùng thư mục với các tệp khác
+    fetch('content2.txt') // Đảm bảo rằng file text nằm trong cùng thư mục với các tệp khác
         .then(response => response.text())
         .then(data => {
             document.getElementById('final-content-box').innerText = data;
