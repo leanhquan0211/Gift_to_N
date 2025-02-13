@@ -164,22 +164,41 @@ function checkAnswer(questionNumber, option) {
 function submitInput(event) {
     event.preventDefault(); // Ngăn sự kiện mặc định để không làm mới trang
     const userInput = document.getElementById('user-input').value;
-    fetch('http://localhost:3000/save', { // Thay YOUR-IP-ADDRESS bằng địa chỉ IP của máy chủ Node.js
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ text: userInput }),
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data); // Thông báo kết quả trả về từ máy chủ
-        document.getElementById('user-input').value = '';
-        document.getElementById('input-screen').style.display = 'none';
-        document.getElementById('question-screen-1').style.display = 'flex';
-    })
-    .catch(error => console.error('Error:', error));
+    document.getElementById('user-input').value = '';
+    showNo();
 }
+function showNo() {
+    const successMessage = document.createElement('div');
+    successMessage.id = 'success-message';
+    successMessage.innerText = 'Gửi không thành công!';
+    document.body.appendChild(successMessage);
+    
+
+    // Ẩn hộp thông tin sau 2 giây
+    setTimeout(() => {
+        document.body.removeChild(successMessage);
+        showLinkMessage();
+    }, 2000);
+}
+
+function showLinkMessage() {
+    const linkMessage = document.createElement('div');
+    linkMessage.id = 'link-message';
+    linkMessage.innerHTML = `
+        <p>Hụ do code lắm quá lỗi khong sửa nội nên nhập đỡ vô google forms đi hụ hụ :>></p>
+        <a href="https://s.pro.vn/U52G" target="_blank">https://s.pro.vn/U52G</a> <!-- Thay bằng đường link của bạn -->
+        <button class="close-btn" onclick="closeLinkMessage()">X</button>
+    `;
+    document.body.appendChild(linkMessage);
+}
+
+function closeLinkMessage() {
+    const linkMessage = document.getElementById('link-message');
+    if (linkMessage) {
+        document.body.removeChild(linkMessage);
+    }
+}
+
 
 
 function autoExpand(textarea) {
@@ -194,6 +213,9 @@ function backToQuestion(questionNumber) {
     } else if (questionNumber === 3) {
         document.getElementById('final-screen').style.display = 'none';
         document.getElementById('question-screen-1').style.display = 'flex';
+    }else if (questionNumber === 2) {
+        document.getElementById('input-screen').style.display = 'none';
+        document.getElementById('question-screen-1').style.display = 'flex';
     }
 }
 
@@ -203,3 +225,4 @@ window.onload = () => {
     loadFinalContent();
     document.getElementById('send-button').addEventListener('click', submitInput);
 };
+

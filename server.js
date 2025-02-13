@@ -8,6 +8,7 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public')); // Serve static files from the 'public' directory
 
 app.post('/save', (req, res) => {
     const { text } = req.body;

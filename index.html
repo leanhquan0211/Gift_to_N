@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xin lỗi vì bạn đã bị con mèo</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://apis.google.com/js/api.js"></script>
 </head>
 <body>
     <div class="container">
@@ -54,6 +55,7 @@
         <div class="screen" id="input-screen" style="display: none;">
             <textarea id="user-input" placeholder="Muốn nói gì khongg?" oninput="autoExpand(this)"></textarea>
              <button id="send-button" onclick="submitInput(event)">Send</button>
+             <button class="back-button" onclick="backToQuestion(2)">Quay lại</button>
        </div>
                       
 
