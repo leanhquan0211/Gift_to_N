@@ -12,8 +12,8 @@
             <div class="display">
                 <div class="message-box" id="message-box"></div>
                 <div class="code-display" id="code-display">******</div>
-                <img id="success-image" src="Image/1509.jpg" alt="Success" class="notification-image" style="display: none;">
-                <img id="error-image" src="Image/Sai.PNG    " alt="Error" class="notification-image" style="display: none;">
+                <img id="success-image" src="Image/1509.jpg"loading="lazy" alt="Success" class="notification-image" style="display: none;">
+                <img id="error-image" src="Image/Sai.png    "loading="lazy" alt="Error" class="notification-image" style="display: none;">
             </div>
             <div class="keypad">
                 <div class="keypad-row">
@@ -41,7 +41,7 @@
 
         <!-- Câu hỏi thứ nhất -->
         <div class="question-screen" id="question-screen-1" style="display: none;">
-            <img src="Image/Chumo.PNG" alt="Question 1" class="question-image">
+            <img src="Image/Chumo.png"loading="lazy" alt="Question 1" class="question-image">
             <p>||------------- Ban yeu minh khongg? -------------||</p>
             <div class="options">
                 <button onclick="checkAnswer(1, 'option1')">Da cooo</button>
@@ -52,7 +52,7 @@
 
                 <!-- Giao diện nhập -->
         <div class="screen" id="input-screen" style="display: none;">
-            <textarea id="user-input" placeholder="Nhập thông tin vào đây" oninput="autoExpand(this)"></textarea>
+            <textarea id="user-input" placeholder="Muốn nói gì khongg?" oninput="autoExpand(this)"></textarea>
              <button id="send-button" onclick="submitInput(event)">Send</button>
        </div>
                       
@@ -138,10 +138,6 @@
         </div>
     </div>
     <script src="script.js"></script>
-    <audio id="background-music" loop>
-        <source src="background-music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    
+
 </body>
 </html>
